@@ -27,14 +27,28 @@ public class Turn {
     private LocalDate day;
 
     @ManyToOne
+   // @JsonBackReference(value = "turn-diary")
     @JoinColumn(name = "id_diary")
     private Diary diary;
 
     @ManyToOne
+   // @JsonBackReference(value = "patient-turn")
     @JoinColumn(name = "id_patient")
     private Patient patient;
 
     @ManyToOne
+   // @JsonBackReference(value = "turn-turnStatus")
     @JoinColumn(name = "id_turn_status")
     private TurnStatus turnStatus;
+
+    @Override
+    public String toString() {
+        return "Turn{" +
+                "id=" + id +
+                ", day=" + day +
+                ", diary=" + diary +
+                ", patient=" + patient +
+                ", turnStatus=" + turnStatus +
+                '}';
+    }
 }

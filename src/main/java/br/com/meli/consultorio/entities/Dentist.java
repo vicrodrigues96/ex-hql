@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "dentist")
@@ -55,6 +54,16 @@ public class Dentist {
     @Column(name = "code_map")
     private String codeMap;
 
-    @OneToMany(mappedBy = "dentist")
-    private List<Diary> diaries;
+//    @OneToMany(mappedBy = "dentist")
+//    @JsonManagedReference(value = "dentist-diary")
+//    private List<Diary> diaries;
+
+    @Override
+    public String toString() {
+        return "Dentist{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

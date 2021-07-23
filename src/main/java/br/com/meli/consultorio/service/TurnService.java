@@ -1,23 +1,29 @@
 package br.com.meli.consultorio.service;
 
-import br.com.meli.consultorio.daos.DiaryDao;
+import br.com.meli.consultorio.daos.DentistDao;
+import br.com.meli.consultorio.daos.PatientDao;
 import br.com.meli.consultorio.daos.TurnDao;
-import br.com.meli.consultorio.entities.Diary;
 import br.com.meli.consultorio.entities.Turn;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
+import java.util.List;
 
+@Service
 public class TurnService {
 
-    private EntityManager entityManager;
     private TurnDao turnDao;
 
-    public TurnService(EntityManager entityManager) {
-        this.entityManager = entityManager;
-        this.turnDao = new TurnDao(entityManager);
+    @Autowired
+    public TurnService() {
+        this.turnDao = new TurnDao();
     }
 
     public void salvar(Turn turn) {
         turnDao.cadastra(turn);
+    }
+
+    public List<Turn> listTurnByStatus(String status) {
+        return this.turnDao.listTurnByStatus(status);
     }
 }

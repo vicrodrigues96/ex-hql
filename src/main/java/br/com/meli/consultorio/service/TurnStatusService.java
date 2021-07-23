@@ -1,23 +1,21 @@
 package br.com.meli.consultorio.service;
 
-import br.com.meli.consultorio.daos.TurnDao;
 import br.com.meli.consultorio.daos.TurnStatusDao;
-import br.com.meli.consultorio.entities.Turn;
 import br.com.meli.consultorio.entities.TurnStatus;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 
+@Service
 public class TurnStatusService {
 
-    private EntityManager entityManager;
     private TurnStatusDao turnStatusDao;
 
-    public TurnStatusService(EntityManager entityManager) {
-        this.entityManager = entityManager;
-        this.turnStatusDao = new TurnStatusDao(entityManager);
+    public TurnStatusService() {
+        this.turnStatusDao = new TurnStatusDao();
     }
 
-    public void salvar(TurnStatus turnStatus) {
-        turnStatusDao.cadastra(turnStatus);
+    public TurnStatus create(TurnStatus turnStatus) {
+        return turnStatusDao.create(turnStatus);
     }
 }

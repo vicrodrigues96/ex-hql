@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "diaries")
@@ -14,10 +13,10 @@ import java.util.List;
 @Data
 public class Diary {
 
-    public Diary(LocalDate startTime, LocalDate endingTime, Dentist dentist) {
+    public Diary(LocalDate startTime, LocalDate endingTime) {
         this.startTime = startTime;
         this.endingTime = endingTime;
-        this.dentist = dentist;
+//        this.dentist = dentist;
     }
 
     @Id
@@ -33,9 +32,11 @@ public class Diary {
 
     @ManyToOne
     @JoinColumn(name = "id_dentist")
+//    @JsonBackReference(value = "dentist-diary")
     private Dentist dentist;
 
-    @OneToMany(mappedBy = "diary")
-    private List<Turn> turn;
+//    @OneToMany(mappedBy = "diary")
+//    @JsonManagedReference(value = "turn-diary")
+//    private List<Turn> turn;
 
 }

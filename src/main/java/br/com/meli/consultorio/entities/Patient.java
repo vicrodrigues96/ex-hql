@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "patients")
@@ -50,8 +49,9 @@ public class Patient {
 
     private String email;
 
-    @OneToMany(mappedBy = "patient")
-    private List<Turn> turns;
+//    @OneToMany(mappedBy = "patient")
+//    @JsonManagedReference(value = "patient-turn")
+//    private List<Turn> turns;
 
     @Override
     public String toString() {

@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "turn_status")
@@ -25,4 +24,8 @@ public class TurnStatus {
     private String name;
 
     private String description;
+
+//    @OneToMany(mappedBy = "turnStatus")
+//    @JsonManagedReference(value = "turn-turnStatus")
+//    private List<Turn> turns;
 }
