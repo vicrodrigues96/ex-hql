@@ -17,8 +17,12 @@ public class TurnDao {
         this.entityManager = factory.createEntityManager();
     }
 
-    public void cadastra(Turn turn) {
+    public Turn create(Turn turn) {
+        entityManager.getTransaction().begin();
         this.entityManager.persist(turn);
+        entityManager.getTransaction().commit();
+
+        return turn;
     }
 
     public List<Turn> listTurnByStatus(String status) {

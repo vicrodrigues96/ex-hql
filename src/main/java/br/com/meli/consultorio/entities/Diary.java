@@ -35,7 +35,16 @@ public class Diary {
 //    @JsonBackReference(value = "dentist-diary")
     private Dentist dentist;
 
-//    @OneToMany(mappedBy = "diary")
+    public void setDentist(Long id) {
+        this.dentist = new Dentist();
+        this.dentist.setId(id);
+    }
+
+    public Long getDentist() {
+        return dentist.getId();
+    }
+
+    //    @OneToMany(mappedBy = "diary")
 //    @JsonManagedReference(value = "turn-diary")
 //    private List<Turn> turn;
 

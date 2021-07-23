@@ -3,10 +3,7 @@ package br.com.meli.consultorio.controllers;
 import br.com.meli.consultorio.entities.Turn;
 import br.com.meli.consultorio.service.TurnService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,10 @@ public class TurnController {
     @RequestMapping("/{status}")
     public List<Turn> listTurnsByStatus(@PathVariable String status) {
         return this.turnService.listTurnByStatus(status);
+    }
+
+    @PostMapping
+    public Turn create(@RequestBody Turn turn) {
+        return this.turnService.create(turn);
     }
 }

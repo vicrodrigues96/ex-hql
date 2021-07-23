@@ -41,6 +41,33 @@ public class Turn {
     @JoinColumn(name = "id_turn_status")
     private TurnStatus turnStatus;
 
+    public Long getDiary() {
+        return diary.getId();
+    }
+
+    public void setDiary(Long id) {
+        this.diary = new Diary();
+        this.diary.setId(id);
+    }
+
+    public Long getPatient() {
+        return patient.getIdPatient();
+    }
+
+    public void setPatient(Long id) {
+        this.patient = new Patient();
+        this.patient.setIdPatient(id);
+    }
+
+    public Long getTurnStatus() {
+        return turnStatus.getIdTurnStatus();
+    }
+
+    public void setTurnStatus(Long id) {
+        this.turnStatus = new TurnStatus();
+        this.turnStatus.setIdTurnStatus(id);
+    }
+
     @Override
     public String toString() {
         return "Turn{" +
